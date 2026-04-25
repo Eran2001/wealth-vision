@@ -1,6 +1,9 @@
 import { useState } from "react";
+
+import * as Icon from "@/components/icons";
 import { PageHeader } from "@/components/partials/PageHeader";
-import { milestones } from "@/constants/milestones";
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -8,34 +11,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
 import {
-  Calendar,
-  Image as ImageIcon,
-  CheckCircle2,
-  Clock,
-  Circle,
-} from "lucide-react";
+  milestoneStatusMeta,
+  milestones,
+  milestonesPage,
+} from "@/constants/milestones";
 import { cn } from "@/lib/utils";
-
-const statusMeta = {
-  completed: {
-    label: "Completed",
-    icon: CheckCircle2,
-    className: "bg-status-ok text-status-ok-fg border-status-ok-border",
-  },
-  "in-progress": {
-    label: "In progress",
-    icon: Clock,
-    className: "bg-status-warn text-status-warn-fg border-status-warn-border",
-  },
-  upcoming: {
-    label: "Upcoming",
-    icon: Circle,
-    className: "bg-secondary text-muted-foreground border-border",
-  },
-} as const;
 
 const Milestones = () => {
   const [selected, setSelected] = useState<string>("all");
@@ -51,29 +32,27 @@ const Milestones = () => {
   return (
     <>
       <PageHeader
-        eyebrow="Milestones"
-        title="Project Timeline"
-        subtitle="Five formal checkpoints from initial proposal through final viva — each with allocated marks and clear deliverables."
+        eyebrow={milestonesPage.header.eyebrow}
+        title={milestonesPage.header.title}
+        subtitle={milestonesPage.header.subtitle}
       />
       <section className="container py-16">
-        <div className="mb-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <p className="text-sm text-muted-foreground">
-            Showing{" "}
-            <span className="font-medium text-foreground">
-              {milestones.length}
-            </span>{" "}
-            milestones
+        <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-fine leading-body tracking-default text-muted-foreground">
+            {milestonesPage.summaryLabel}{" "}
+            <span className="font-ui text-foreground">{milestones.length}</span>{" "}
+            {milestonesPage.summarySuffix}
           </p>
           <div className="w-full sm:w-72">
             <Select value={selected} onValueChange={handleJump}>
               <SelectTrigger>
-                <SelectValue placeholder="Jump to a milestone" />
+                <SelectValue placeholder={milestonesPage.selectPlaceholder} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">All milestones</SelectItem>
-                {milestones.map((m) => (
-                  <SelectItem key={m.id} value={m.id}>
-                    {m.title}
+                <SelectItem value="all">{milestonesPage.allOption}</SelectItem>
+                {milestones.map((milestone) => (
+                  <SelectItem key={milestone.id} value={milestone.id}>
+                    {milestone.title}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -85,37 +64,38 @@ const Milestones = () => {
         <div className="relative max-w-4xl mx-auto">
           <div className="absolute left-4 md:left-6 top-2 bottom-2 w-px bg-border" />
           <div className="space-y-10">
-            {milestones.map((m, idx) => {
-              const meta = statusMeta[m.status];
-              const Icon = meta.icon;
+            {milestones.map((milestone, index) => {
+              const meta = milestoneStatusMeta[milestone.status];
+              const StatusIcon = meta.icon;
+
               return (
                 <div
-                  key={m.id}
-                  id={`m-${m.id}`}
+                  key={milestone.id}
+                  id={`m-${milestone.id}`}
                   className="relative pl-14 md:pl-20"
                 >
                   <div
                     className={cn(
                       "absolute left-0 md:left-2 top-1 flex h-9 w-9 items-center justify-center rounded-full border-2 bg-background shadow-card-soft",
-                      m.status === "completed" && "border-primary",
-                      m.status === "in-progress" && "border-accent",
-                      m.status === "upcoming" && "border-border",
+                      milestone.status === "completed" && "border-primary",
+                      milestone.status === "in-progress" && "border-accent",
+                      milestone.status === "upcoming" && "border-border",
                     )}
                   >
-                    <span className="font-display text-sm font-semibold text-primary">
-                      {idx + 1}
+                    <span className="font-display text-fine font-heading text-primary">
+                      {index + 1}
                     </span>
                   </div>
 
-                  <Card className="p-6 md:p-7 shadow-card-soft hover:shadow-elevated transition-shadow">
+                  <Card className="p-6 shadow-card-soft hover:shadow-elevated transition-shadow md:p-7">
                     <div className="flex flex-wrap items-start justify-between gap-3">
                       <div>
-                        <h3 className="font-display text-xl md:text-2xl font-semibold">
-                          {m.title}
+                        <h3 className="font-display text-subhead font-heading leading-compact tracking-close md:text-title">
+                          {milestone.title}
                         </h3>
-                        <div className="mt-2 flex items-center gap-1.5 text-sm text-muted-foreground">
-                          <Calendar className="h-3.5 w-3.5" />
-                          {m.dateRange}
+                        <div className="mt-2 flex items-center gap-1.5 text-fine leading-body tracking-default text-muted-foreground">
+                          <Icon.Calendar className="h-3.5 w-3.5" />
+                          {milestone.dateRange}
                         </div>
                       </div>
                       <div className="flex flex-col items-end gap-2">
@@ -123,23 +103,23 @@ const Milestones = () => {
                           variant="outline"
                           className={cn("border", meta.className)}
                         >
-                          <Icon className="h-3 w-3 mr-1" />
+                          <StatusIcon className="h-3 w-3 mr-1" />
                           {meta.label}
                         </Badge>
                         <Badge variant="secondary" className="font-mono">
-                          {m.marks} marks
+                          {milestone.marks} {milestonesPage.marksSuffix}
                         </Badge>
                       </div>
                     </div>
 
-                    <div className="mt-5 grid md:grid-cols-3 gap-5">
+                    <div className="mt-5 grid gap-5 md:grid-cols-3">
                       <div className="md:col-span-2">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          {m.description}
+                        <p className="text-fine leading-airy tracking-default text-muted-foreground">
+                          {milestone.description}
                         </p>
                       </div>
                       <div className="aspect-video md:aspect-auto rounded-lg border border-dashed border-border bg-secondary/40 flex items-center justify-center text-muted-foreground">
-                        <ImageIcon className="h-8 w-8 opacity-40" />
+                        <Icon.Image className="h-8 w-8 opacity-40" />
                       </div>
                     </div>
                   </Card>

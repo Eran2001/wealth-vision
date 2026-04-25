@@ -17,27 +17,23 @@ const HomePage = () => {
         <div className="absolute -top-40 -right-40 h-125 w-125 rounded-full bg-accent/20 blur-3xl" />
         <div className="absolute -bottom-32 -left-32 h-100 w-100 rounded-full bg-primary-glow/40 blur-3xl" />
 
-        <div className="container relative py-24 md:py-32 lg:py-40">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
+        <div className="container relative pt-32 pb-24 md:pt-36 md:pb-32 lg:pt-32 lg:pb-20">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
             <div>
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/5 px-3 py-1 text-caption font-ui label-case tracking-airy">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-                Final Year Research Project - 2025 / 2026 - {site.groupId}
-              </div>
-              <h1 className="font-display text-display font-heading leading-display tracking-close text-balance md:text-display-lg lg:text-hero">
+              <h1 className="font-display text-display-lg font-heading leading-display tracking-close text-balance md:text-hero lg:text-hero-lg xl:text-hero-xl">
                 {site.projectName}
               </h1>
-              <p className="mt-6 max-w-2xl font-display text-subhead leading-close tracking-default text-primary-foreground/85 md:text-title">
+              <p className="mt-7 max-w-3xl font-display text-title leading-close tracking-default text-primary-foreground/85 md:text-heading">
                 {site.tagline}
               </p>
-              <p className="mt-6 max-w-2xl text-body leading-airy tracking-default text-primary-foreground/70 md:text-body-lg">
+              <p className="mt-7 max-w-2xl text-body-lg leading-airy tracking-default text-primary-foreground/70 md:text-subhead">
                 {site.abstract}
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
                 <Button
                   asChild
                   size="lg"
-                  className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-glow"
+                  className="bg-accent text-body text-accent-foreground hover:bg-accent/90 shadow-glow"
                 >
                   <Link to="/domain">
                     Explore the research{" "}
@@ -48,13 +44,13 @@ const HomePage = () => {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-primary-foreground/25 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                  className="border-primary-foreground/25 bg-transparent text-body text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
                 >
                   <Link to="/milestones">View milestones</Link>
                 </Button>
               </div>
             </div>
-            <div className="hidden h-64 lg:block">
+            <div className="hidden h-128 lg:block xl:h-144">
               <HeroVisual />
             </div>
           </div>

@@ -1,6 +1,6 @@
-import { Person } from "@/types";
+import * as Icon from "@/components/icons";
 import { Card } from "@/components/ui/card";
-import { User } from "lucide-react";
+import type { Person } from "@/types";
 
 export const PersonCard = ({ person }: { person: Person }) => {
   return (
@@ -8,26 +8,36 @@ export const PersonCard = ({ person }: { person: Person }) => {
       <div className="flex items-start gap-5">
         <div className="relative h-16 w-16 shrink-0 rounded-xl overflow-hidden bg-hero-gradient flex items-center justify-center text-primary-foreground font-display text-body-lg font-heading shadow-card-soft">
           {person.image ? (
-            <img src={person.image} alt={person.name} className="h-full w-full object-cover" />
+            <img
+              src={person.image}
+              alt={person.name}
+              className="h-full w-full object-cover"
+            />
           ) : (
-            person.initials || <User className="h-6 w-6" />
+            person.initials || <Icon.User className="h-6 w-6" />
           )}
         </div>
         <div className="min-w-0 flex-1">
-          <h3 className="font-display text-body-lg font-heading text-foreground leading-compact">
+          <h3 className="font-display text-body-lg font-heading leading-compact tracking-close text-foreground">
             {person.name}
           </h3>
           {person.studentId && (
-            <p className="mt-0.5 text-caption font-mono text-muted-foreground">{person.studentId}</p>
+            <p className="mt-0.5 text-caption font-ui leading-body tracking-default text-muted-foreground">
+              {person.studentId}
+            </p>
           )}
-          <p className="mt-2 text-fine text-foreground/80 leading-close">{person.role}</p>
+          <p className="mt-2 text-fine leading-close tracking-default text-foreground/80">
+            {person.role}
+          </p>
           {person.department && (
-            <p className="mt-1 text-caption text-muted-foreground">{person.department}</p>
+            <p className="mt-1 text-caption leading-body tracking-default text-muted-foreground">
+              {person.department}
+            </p>
           )}
           {person.email && (
             <a
               href={`mailto:${person.email}`}
-              className="mt-1 text-caption text-accent hover:underline block"
+              className="mt-1 block text-caption leading-body tracking-default text-accent hover:underline"
             >
               {person.email}
             </a>

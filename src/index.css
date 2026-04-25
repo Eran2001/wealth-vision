@@ -187,6 +187,8 @@
   --text-display: 3rem; /* 48px — display */
   --text-display-lg: 3.75rem; /* 60px — large display */
   --text-hero: 4.5rem; /* 72px — hero headline */
+  --text-hero-lg: 5.5rem; /* 88px - large hero headline */
+  --text-hero-xl: 6.5rem; /* 104px - oversized hero headline */
 
   /* Leading (line-height) */
   --leading-flush: 1; /* no space — display numbers */
@@ -318,4 +320,212 @@
 
 @utility label-case {
   text-transform: var(--text-transform-label);
+}
+
+/* Component token classes
+   These class names replace hardcoded shadcn text/font/tracking/leading/rounded utilities.
+   Exact names: ui-accordion-trigger, ui-accordion-content, ui-alert-root,
+   ui-alert-title, ui-alert-description, ui-badge-base, ui-button-base,
+   ui-button-radius, ui-card-root, ui-card-title, ui-card-description,
+   ui-dialog-title, ui-dialog-description, ui-drawer-title,
+   ui-drawer-description, ui-form-description, ui-form-message, ui-input,
+   ui-label, ui-select-trigger, ui-select-label, ui-select-item, ui-tabs-list,
+   ui-tabs-trigger, ui-textarea, ui-toast-root, ui-toast-action,
+   ui-toast-title, ui-toast-description, ui-tooltip-content, ui-table,
+   ui-table-footer, ui-table-head, ui-table-caption, ui-calendar-caption,
+   ui-calendar-head, ui-calendar-cell, ui-calendar-day, ui-breadcrumb-list,
+   ui-breadcrumb-page, ui-command-input, ui-command-empty, ui-command-group,
+   ui-command-item, ui-command-shortcut, ui-menu-item, ui-menu-label,
+   ui-menu-shortcut, ui-navigation-menu-trigger, ui-chart-root,
+   ui-chart-tooltip, ui-chart-tooltip-label, ui-chart-tooltip-value,
+   ui-toggle, ui-input-otp-slot, ui-sidebar-group-label,
+   ui-sidebar-group-content, ui-sidebar-menu-button, ui-sidebar-menu-badge,
+   ui-sidebar-menu-button-sm, ui-sidebar-menu-button-md,
+   ui-sidebar-menu-sub-button-sm. */
+@layer components {
+  .ui-accordion-trigger,
+  .ui-button-base,
+  .ui-form-message,
+  .ui-input::file-selector-button,
+  .ui-label,
+  .ui-select-trigger,
+  .ui-tabs-trigger,
+  .ui-toast-action,
+  .ui-table-footer,
+  .ui-table-head,
+  .ui-calendar-caption,
+  .ui-command-group,
+  .ui-command-item,
+  .ui-menu-label,
+  .ui-navigation-menu-trigger,
+  .ui-toggle,
+  .ui-chart-tooltip-label,
+  .ui-chart-tooltip-value,
+  .ui-sidebar-group-label,
+  .ui-sidebar-menu-button,
+  .ui-sidebar-menu-badge {
+    font-weight: var(--font-weight-ui);
+  }
+
+  .ui-alert-title,
+  .ui-card-title,
+  .ui-dialog-title,
+  .ui-drawer-title,
+  .ui-select-label,
+  .ui-toast-title {
+    font-weight: var(--font-weight-heading);
+  }
+
+  .ui-button-base,
+  .ui-select-trigger,
+  .ui-tabs-list,
+  .ui-toast-root,
+  .ui-toast-action,
+  .ui-tooltip-content,
+  .ui-input,
+  .ui-textarea {
+    border-radius: var(--radius-md);
+  }
+
+  .ui-button-radius {
+    border-radius: var(--radius-md);
+  }
+
+  .ui-alert-root,
+  .ui-card-root {
+    border-radius: var(--radius-lg);
+  }
+
+  .ui-badge-base {
+    border-radius: var(--radius-full);
+    font-size: var(--text-caption);
+    font-weight: var(--font-weight-label);
+    line-height: var(--leading-body);
+    letter-spacing: var(--tracking-default);
+  }
+
+  .ui-button-base,
+  .ui-accordion-content,
+  .ui-alert-description,
+  .ui-card-description,
+  .ui-dialog-description,
+  .ui-drawer-description,
+  .ui-form-description,
+  .ui-form-message,
+  .ui-select-trigger,
+  .ui-select-item,
+  .ui-tabs-trigger,
+  .ui-toast-action,
+  .ui-toast-title,
+  .ui-toast-description,
+  .ui-tooltip-content,
+  .ui-table,
+  .ui-table-caption,
+  .ui-textarea,
+  .ui-calendar-cell,
+  .ui-calendar-day,
+  .ui-breadcrumb-list,
+  .ui-command-input,
+  .ui-command-empty,
+  .ui-command-item,
+  .ui-menu-item,
+  .ui-navigation-menu-trigger,
+  .ui-toggle,
+  .ui-input-otp-slot,
+  .ui-sidebar-group-content,
+  .ui-sidebar-menu-button,
+  .ui-sidebar-menu-button-md {
+    font-size: var(--text-fine);
+    line-height: var(--leading-body);
+    letter-spacing: var(--tracking-default);
+  }
+
+  .ui-sidebar-group-label,
+  .ui-sidebar-menu-badge,
+  .ui-sidebar-menu-button-sm,
+  .ui-sidebar-menu-sub-button-sm {
+    font-size: var(--text-caption);
+    line-height: var(--leading-body);
+    letter-spacing: var(--tracking-default);
+  }
+
+  .ui-calendar-head {
+    font-size: 0.8rem;
+    font-weight: var(--font-weight-body);
+    line-height: var(--leading-body);
+    letter-spacing: var(--tracking-default);
+  }
+
+  .ui-command-group,
+  .ui-command-shortcut,
+  .ui-menu-shortcut,
+  .ui-chart-root,
+  .ui-chart-tooltip {
+    font-size: var(--text-caption);
+    line-height: var(--leading-body);
+    letter-spacing: var(--tracking-default);
+  }
+
+  .ui-command-shortcut,
+  .ui-menu-shortcut {
+    letter-spacing: var(--tracking-spread);
+  }
+
+  .ui-chart-tooltip-value {
+    font-size: var(--text-caption);
+    line-height: var(--leading-body);
+    letter-spacing: var(--tracking-default);
+  }
+
+  .ui-input {
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    letter-spacing: var(--tracking-default);
+  }
+
+  @media (min-width: 48rem) {
+    .ui-input {
+      font-size: var(--text-fine);
+    }
+  }
+
+  .ui-input::file-selector-button {
+    font-size: var(--text-fine);
+  }
+
+  .ui-alert-title,
+  .ui-card-title,
+  .ui-dialog-title,
+  .ui-drawer-title,
+  .ui-label {
+    line-height: var(--leading-flush);
+    letter-spacing: var(--tracking-close);
+  }
+
+  .ui-dialog-title,
+  .ui-drawer-title {
+    font-size: var(--text-body-lg);
+  }
+
+  .ui-card-title {
+    font-size: var(--text-title);
+  }
+
+  .ui-select-label {
+    font-size: var(--text-fine);
+    line-height: var(--leading-body);
+    letter-spacing: var(--tracking-default);
+  }
+
+  .ui-tabs-list {
+    font-size: var(--text-fine);
+    line-height: var(--leading-body);
+    letter-spacing: var(--tracking-default);
+  }
+
+  .ui-table-head {
+    font-size: var(--text-fine);
+    line-height: var(--leading-body);
+    letter-spacing: var(--tracking-default);
+  }
 }

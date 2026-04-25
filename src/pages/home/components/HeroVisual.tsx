@@ -2,7 +2,7 @@ const HeroVisual = () => (
   <div className="relative flex h-full w-full items-center justify-center">
     <svg
       viewBox="0 0 400 300"
-      className="w-full max-w-sm opacity-90"
+      className="w-full max-w-3xl opacity-90"
       fill="none"
     >
       {/* Chart base */}
