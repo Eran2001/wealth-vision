@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import * as Icon from "@/components/icons";
 import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-  SheetTitle,
-  SheetHeader,
-} from "@/components/ui/sheet";
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+  DrawerClose,
+  DrawerDescription,
+} from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
 import { navbarContent, navigationLinks } from "@/constants/navigation";
 import { site } from "@/constants/site";
@@ -72,24 +74,57 @@ export const Navbar = () => {
         </nav>
 
         <div className="lg:hidden">
-          <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger asChild>
+          <Drawer open={open} onOpenChange={setOpen} direction="right">
+            <DrawerTrigger asChild>
               <Button
                 variant="ghost"
                 size="icon"
                 aria-label={navbarContent.openMenuLabel}
+                onClick={(event) => event.currentTarget.blur()}
                 className="text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
               >
                 <Icon.Menu className="h-5 w-5" />
               </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-72">
-              <SheetHeader>
-                <SheetTitle className="font-display text-left leading-compact tracking-close">
-                  {site.projectName}
-                </SheetTitle>
-              </SheetHeader>
-              <nav className="mt-6 flex flex-col gap-1">
+            </DrawerTrigger>
+            <DrawerContent
+              showHandle={false}
+              className="inset-x-auto right-0 bottom-0 top-0 mt-0 h-full w-80 rounded-none border-l border-primary-foreground/10 bg-primary text-primary-foreground"
+            >
+              <DrawerClose asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  aria-label={navbarContent.closeMenuLabel}
+                  className="absolute right-4 top-4 shrink-0 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                >
+                  <Icon.X className="h-5 w-5" />
+                </Button>
+              </DrawerClose>
+              <DrawerHeader className="p-6 pr-16 text-left">
+                <DrawerTitle asChild>
+                  <Link
+                    to="/"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-3"
+                  >
+                    <div className="flex h-13 w-13 items-center justify-center rounded-md border border-primary-foreground/15 bg-primary-foreground/10 text-primary-foreground shadow-card-soft">
+                      <Icon.GraduationCap className="h-7 w-7" />
+                    </div>
+                    <div className="flex flex-col leading-flush">
+                      <span className="font-display text-title font-heading leading-compact tracking-close text-primary-foreground">
+                        {site.projectName}
+                      </span>
+                      <span className="text-fine label-case tracking-airy text-primary-foreground/65">
+                        {navbarContent.projectType}
+                      </span>
+                    </div>
+                  </Link>
+                </DrawerTitle>
+                <DrawerDescription className="sr-only">
+                  {navbarContent.drawerDescription}
+                </DrawerDescription>
+              </DrawerHeader>
+              <nav className="flex flex-col gap-1 px-6 pb-6">
                 {navigationLinks.map((l) => (
                   <NavLink
                     key={l.to}
@@ -99,8 +134,8 @@ export const Navbar = () => {
                       cn(
                         "px-3 py-2.5 rounded-md text-fine font-ui transition-colors",
                         isActive
-                          ? "bg-primary text-primary-foreground"
-                          : "text-foreground hover:bg-secondary",
+                          ? "bg-primary-foreground/12 text-primary-foreground"
+                          : "text-primary-foreground/72 hover:bg-primary-foreground/8 hover:text-primary-foreground",
                       )
                     }
                   >
@@ -108,8 +143,8 @@ export const Navbar = () => {
                   </NavLink>
                 ))}
               </nav>
-            </SheetContent>
-          </Sheet>
+            </DrawerContent>
+          </Drawer>
         </div>
       </div>
     </header>

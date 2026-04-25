@@ -115,8 +115,8 @@
 /* ─── Tailwind theme mapping ───────────────────────────────── */
 @theme inline {
   /* Fonts */
-  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
-  --font-display: Fraunces, ui-serif, Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
 
   /* Semantic colors */
   --color-background: var(--background);

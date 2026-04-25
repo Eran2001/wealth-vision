@@ -11,11 +11,15 @@ export const navigationLinks = [
 export const navbarContent = {
   projectType: "Research Project",
   openMenuLabel: "Open menu",
+  closeMenuLabel: "Close menu",
+  drawerDescription: "Mobile navigation menu for Wealth Vision.",
 };
 
 export const footerContent = {
   navigationHeading: "Navigate",
   institutionHeading: "Institution",
+  projectType: "Research Project",
+  contextHeading: "Project Context",
   rightsSuffix: "All rights reserved.",
 };
 

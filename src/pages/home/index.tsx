@@ -60,10 +60,10 @@ const HomePage = () => {
       {/* Highlights */}
       <section className="container py-20 md:py-24">
         <div className="max-w-2xl">
-          <p className="mb-3 text-caption font-label label-case tracking-airy text-accent">
+          <p className="mb-4 text-fine font-label label-case tracking-airy text-accent">
             At a Glance
           </p>
-          <h2 className="font-display text-heading font-heading leading-compact tracking-close text-balance md:text-heading-lg">
+          <h2 className="font-display text-heading-lg font-heading leading-compact tracking-close text-balance md:text-display">
             A focused project, structured for real contribution.
           </h2>
         </div>
@@ -76,10 +76,10 @@ const HomePage = () => {
               <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary text-primary-foreground">
                 <highlight.icon className="h-5 w-5" />
               </div>
-              <h3 className="mt-5 font-display text-subhead font-heading leading-compact tracking-close">
+              <h3 className="mt-5 font-display text-title font-heading leading-compact tracking-close">
                 {highlight.title}
               </h3>
-              <p className="mt-2 text-fine leading-airy tracking-default text-muted-foreground">
+              <p className="mt-3 text-body leading-airy tracking-default text-muted-foreground">
                 {highlight.text}
               </p>
             </Card>
@@ -92,13 +92,13 @@ const HomePage = () => {
         <div className="container py-20 md:py-24">
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <p className="mb-3 text-caption font-label label-case tracking-airy text-accent">
+              <p className="mb-4 text-fine font-label label-case tracking-airy text-accent">
                 Why Wealth Vision
               </p>
-              <h2 className="font-display text-heading font-heading leading-compact tracking-close text-balance md:text-heading-lg">
+              <h2 className="font-display text-heading-lg font-heading leading-compact tracking-close text-balance md:text-display">
                 Why this project matters.
               </h2>
-              <p className="mt-4 text-body leading-airy tracking-default text-muted-foreground">
+              <p className="mt-5 text-body-lg leading-airy tracking-default text-muted-foreground">
                 Global investing is complex and fragmented. Wealth Vision
                 bridges the gap between generic robo-advisors and fully
                 personalised, ESG-aware, globally inclusive investment guidance.
@@ -114,10 +114,10 @@ const HomePage = () => {
                     <benefit.icon className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-body font-heading leading-compact text-foreground">
+                    <h3 className="text-subhead font-heading leading-compact text-foreground">
                       {benefit.title}
                     </h3>
-                    <p className="mt-1 text-fine leading-airy tracking-default text-muted-foreground">
+                    <p className="mt-2 text-body leading-airy tracking-default text-muted-foreground">
                       {benefit.text}
                     </p>
                   </div>
@@ -129,19 +129,19 @@ const HomePage = () => {
       </section>
 
       {/* CTA */}
-      <section className="container py-20">
+      <section className="container pt-16 pb-0 md:pt-20">
         <div className="rounded-2xl bg-hero-gradient text-primary-foreground p-10 md:p-14 text-center shadow-elevated">
-          <h2 className="mx-auto max-w-2xl font-display text-heading font-heading leading-compact tracking-close text-balance md:text-heading-lg">
+          <h2 className="mx-auto max-w-3xl font-display text-heading-lg font-heading leading-compact tracking-close text-balance md:text-display">
             Read the full domain breakdown and methodology.
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-body leading-airy tracking-default text-primary-foreground/75">
+          <p className="mx-auto mt-5 max-w-2xl text-body-lg leading-airy tracking-default text-primary-foreground/75">
             Literature survey, research gap, problem statement, objectives, and
             the technologies powering Wealth Vision.
           </p>
           <Button
             asChild
             size="lg"
-            className="mt-7 bg-accent text-accent-foreground hover:bg-accent/90"
+            className="mt-8 bg-accent text-body text-accent-foreground hover:bg-accent/90"
           >
             <Link to="/domain">
               Go to Domain <Icon.ArrowRight className="ml-1.5 h-4 w-4" />
