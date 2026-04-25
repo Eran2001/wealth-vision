@@ -1,9 +1,9 @@
-import { PageHeader } from "@/components/PageHeader";
+import { PageHeader } from "@/components/partials/PageHeader";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { documents } from "@/data/documents";
+import { documents } from "@/constants/documents";
 import { ExternalLink, FileText } from "lucide-react";
 import { DocumentItem } from "@/types";
 
@@ -17,8 +17,12 @@ const DocCard = ({ doc }: { doc: DocumentItem }) => {
         </div>
         <Badge variant="secondary">{doc.category}</Badge>
       </div>
-      <h3 className="font-display text-lg font-semibold leading-snug">{doc.title}</h3>
-      <p className="mt-1 text-xs text-muted-foreground capitalize">Status: {doc.status}</p>
+      <h3 className="font-display text-body-lg font-heading leading-close">
+        {doc.title}
+      </h3>
+      <p className="mt-1 text-caption text-muted-foreground capitalize">
+        Status: {doc.status}
+      </p>
       <Button
         asChild={!disabled}
         disabled={disabled}
@@ -54,8 +58,12 @@ const Documents = () => {
       <section className="container py-16">
         <Tabs defaultValue="submitted" className="max-w-5xl mx-auto">
           <TabsList className="grid w-full max-w-sm grid-cols-2 mb-10">
-            <TabsTrigger value="submitted">Submitted ({submitted.length})</TabsTrigger>
-            <TabsTrigger value="pending">Pending ({pending.length})</TabsTrigger>
+            <TabsTrigger value="submitted">
+              Submitted ({submitted.length})
+            </TabsTrigger>
+            <TabsTrigger value="pending">
+              Pending ({pending.length})
+            </TabsTrigger>
           </TabsList>
           <TabsContent value="submitted">
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

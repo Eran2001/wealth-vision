@@ -1,7 +1,19 @@
-import { PageHeader } from "@/components/PageHeader";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { PageHeader } from "@/components/partials/PageHeader";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
-import { BookOpen, Search, AlertCircle, Target, Workflow, Cpu } from "lucide-react";
+import {
+  BookOpen,
+  Search,
+  AlertCircle,
+  Target,
+  Workflow,
+  Cpu,
+} from "lucide-react";
 
 const sections = [
   {
@@ -11,13 +23,26 @@ const sections = [
     body: (
       <>
         <p>
-          The literature survey examines prior work across three converging streams: foundational methods, recent applied
-          systems, and evaluation frameworks within the chosen domain. We reviewed peer-reviewed journals, top-tier
-          conferences, and credible technical reports from the last seven years.
+          The literature survey examines existing investor profiling approaches,
+          robo-advisory systems, and ESG (Environmental, Social, Governance)
+          integration frameworks across global financial markets. We reviewed
+          peer-reviewed journals, fintech research reports, and industry
+          whitepapers from the last seven years.
         </p>
         <p>
-          Existing approaches typically optimise for a single dimension — accuracy, latency, or interpretability — rarely
-          all three. The survey grounds our design choices and motivates the gap we address.
+          Investor profiling identifies preferences such as risk appetite,
+          investment horizon, sector and region interest, and ESG priorities.
+          Modern profiling combines both quantitative measures (data inputs) and
+          qualitative aspects (preferences, ESG), ensuring investment decisions
+          align with individual goals and responsibilities.
+        </p>
+        <p>
+          Current methods include: <strong>Advisor-led Questionnaires</strong>{" "}
+          (manual, subjective),
+          <strong> Conventional Robo-Advisors</strong> (algorithm-driven,
+          domestic scope), and
+          <strong> Institutional Advisory Tools</strong> — each with significant
+          limitations in personalisation, ESG coverage, and global market reach.
         </p>
       </>
     ),
@@ -29,11 +54,28 @@ const sections = [
     body: (
       <>
         <p>
-          Despite substantial progress, current solutions exhibit three recurring limitations: (1) limited generalisation
-          across heterogeneous inputs, (2) opaque decision pathways that hinder adoption, and (3) absence of unified
-          evaluation under realistic operating conditions.
+          Despite progress in robo-advisory technology, current solutions
+          exhibit recurring limitations:
         </p>
-        <p>The gap is therefore both methodological and infrastructural — we address both.</p>
+        <ul className="list-disc pl-5 space-y-1.5">
+          <li>
+            Most existing systems use manual or rule-based processes that lack
+            adaptability and personalisation.
+          </li>
+          <li>
+            Conventional robo-advisors focus on local/domestic markets and lack
+            meaningful ESG integration.
+          </li>
+          <li>
+            Small advisory firms face significant cost and technical barriers to
+            adopting advanced AI systems.
+          </li>
+          <li>
+            There is a need for integrated systems that utilise AI and
+            predictive analytics to provide real-time, globally inclusive, and
+            ESG-aware investment guidance.
+          </li>
+        </ul>
       </>
     ),
   },
@@ -42,11 +84,31 @@ const sections = [
     icon: AlertCircle,
     title: "Research Problem",
     body: (
-      <p>
-        How can we design an end-to-end framework that delivers reliable, interpretable, and reproducible outcomes for
-        the target task across realistic, heterogeneous conditions, while remaining feasible to deploy in
-        resource-constrained environments?
-      </p>
+      <>
+        <p>
+          Global investing offers thousands of stocks, commodities, indices, and
+          funds — making personalised guidance complex:
+        </p>
+        <ul className="list-disc pl-5 space-y-1.5">
+          <li>
+            Manual profiling is subjective, time-consuming, and inconsistent
+            across advisors.
+          </li>
+          <li>
+            Current robo-advisors focus on local markets and lack ESG
+            integration.
+          </li>
+          <li>
+            Small advisory firms face cost and technical barriers to adopt
+            advanced systems.
+          </li>
+        </ul>
+        <p className="mt-3 font-medium text-foreground">
+          How can we design a system that delivers personalized, transparent,
+          and globally inclusive investment recommendations integrating risk
+          tolerance, ESG preferences, and real-time market data?
+        </p>
+      </>
     ),
   },
   {
@@ -54,13 +116,38 @@ const sections = [
     icon: Target,
     title: "Research Objectives",
     body: (
-      <ul className="list-disc pl-5 space-y-1.5">
-        <li>Characterise the problem space through structured analysis of representative scenarios.</li>
-        <li>Design a modular framework with four interoperable components.</li>
-        <li>Implement and integrate the components into a working system.</li>
-        <li>Evaluate the system against established benchmarks and ablations.</li>
-        <li>Document the methodology, results, and limitations transparently.</li>
-      </ul>
+      <>
+        <p className="font-medium text-foreground">Main Objective</p>
+        <p>
+          To design and develop Wealth Vision — an Investor Profiling and
+          Recommendation System that provides personalized, transparent, and
+          globally inclusive investment options integrating risk and
+          Environmental, Social, Governance (ESG) preferences.
+        </p>
+        <p className="font-medium text-foreground mt-4">Specific Objectives</p>
+        <ul className="list-disc pl-5 space-y-1.5">
+          <li>
+            Build an intelligent investor profiling engine that captures risk
+            appetite, investment horizon, and ESG priorities.
+          </li>
+          <li>
+            Develop an ESG scoring and integration module that evaluates
+            investment options against sustainability criteria.
+          </li>
+          <li>
+            Design a recommendation engine using ML models to match investor
+            profiles with suitable global assets.
+          </li>
+          <li>
+            Create an interactive dashboard for transparent, explainable
+            investment recommendations.
+          </li>
+          <li>
+            Evaluate the system against real-world investor scenarios and
+            established benchmarks.
+          </li>
+        </ul>
+      </>
     ),
   },
   {
@@ -70,13 +157,31 @@ const sections = [
     body: (
       <>
         <p>
-          The work follows a design-science approach across four phases: <strong>requirement formalisation</strong>,
-          <strong> component design</strong>, <strong>integration</strong>, and <strong>empirical evaluation</strong>.
-          Each phase produces a verifiable artefact reviewed by the supervisory panel.
+          Wealth Vision follows an agile, component-driven research methodology
+          across four phases:
         </p>
+        <ul className="list-disc pl-5 space-y-1.5">
+          <li>
+            <strong>Phase 1 — Requirement Analysis:</strong> Define investor
+            profiling criteria, ESG scoring dimensions, and market data sources.
+          </li>
+          <li>
+            <strong>Phase 2 — System Design:</strong> Architect the profiling
+            engine, recommendation model, and ESG integration layer.
+          </li>
+          <li>
+            <strong>Phase 3 — Implementation:</strong> Develop and integrate all
+            four components into a unified platform.
+          </li>
+          <li>
+            <strong>Phase 4 — Evaluation:</strong> Validate recommendations
+            against real investor profiles and measure ESG alignment accuracy.
+          </li>
+        </ul>
         <p>
-          Quantitative evaluation uses public benchmarks and a curated internal dataset; qualitative evaluation uses
-          structured walkthroughs with domain participants.
+          Quantitative evaluation uses market benchmark datasets; qualitative
+          evaluation uses structured feedback from domain participants and
+          financial advisors.
         </p>
       </>
     ),
@@ -93,15 +198,19 @@ const sections = [
           "React",
           "FastAPI",
           "PostgreSQL",
-          "Docker",
-          "PyTorch",
+          "MongoDB",
           "scikit-learn",
+          "TensorFlow",
           "Pandas",
-          "MLflow",
+          "NumPy",
+          "Docker",
           "GitHub Actions",
-          "AWS",
         ].map((t) => (
-          <Badge key={t} variant="secondary" className="text-xs font-medium px-3 py-1">
+          <Badge
+            key={t}
+            variant="secondary"
+            className="text-caption font-ui px-3 py-1"
+          >
             {t}
           </Badge>
         ))}
@@ -116,11 +225,15 @@ const Domain = () => {
       <PageHeader
         eyebrow="Domain"
         title="Research Domain & Approach"
-        subtitle="From literature to methodology — the foundations of the project laid out section by section."
+        subtitle="From literature to methodology — the foundations of Wealth Vision laid out section by section."
       />
       <section className="container py-16 md:py-20">
         <div className="mx-auto max-w-3xl">
-          <Accordion type="multiple" defaultValue={["literature"]} className="space-y-3">
+          <Accordion
+            type="multiple"
+            defaultValue={["literature"]}
+            className="space-y-3"
+          >
             {sections.map((s) => (
               <AccordionItem
                 key={s.id}
@@ -132,10 +245,12 @@ const Domain = () => {
                     <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground">
                       <s.icon className="h-5 w-5" />
                     </div>
-                    <span className="font-display text-lg font-semibold text-left">{s.title}</span>
+                    <span className="font-display text-body-lg font-heading text-left">
+                      {s.title}
+                    </span>
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="pb-6 pl-14 pr-2 text-muted-foreground space-y-3 leading-relaxed">
+                <AccordionContent className="pb-6 pl-14 pr-2 text-muted-foreground space-y-3 leading-airy">
                   {s.body}
                 </AccordionContent>
               </AccordionItem>

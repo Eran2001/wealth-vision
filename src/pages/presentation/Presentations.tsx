@@ -1,8 +1,12 @@
-import { PageHeader } from "@/components/PageHeader";
+import { PageHeader } from "@/components/partials/PageHeader";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { presentations } from "@/data/presentations";
-import { Calendar, ExternalLink, Presentation as PresentationIcon } from "lucide-react";
+import { presentations } from "@/constants/presentations";
+import {
+  Calendar,
+  ExternalLink,
+  Presentation as PresentationIcon,
+} from "lucide-react";
 
 const Presentations = () => {
   return (
@@ -17,9 +21,12 @@ const Presentations = () => {
           {presentations.map((p) => {
             const disabled = p.link === "[PLACEHOLDER]";
             return (
-              <Card key={p.id} className="overflow-hidden shadow-card-soft hover:shadow-elevated transition-all hover:-translate-y-0.5">
-                <div className="aspect-[16/9] bg-hero-gradient relative flex items-center justify-center">
-                  <div className="absolute inset-0 opacity-[0.07] [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] [background-size:20px_20px]" />
+              <Card
+                key={p.id}
+                className="overflow-hidden shadow-card-soft hover:shadow-elevated transition-all hover:-translate-y-0.5"
+              >
+                <div className="aspect-video bg-hero-gradient relative flex items-center justify-center">
+                  <div className="absolute inset-0 opacity-subtle bg-dot-grid-sm" />
                   <PresentationIcon className="h-14 w-14 text-primary-foreground/80 relative" />
                 </div>
                 <div className="p-6">
@@ -27,8 +34,12 @@ const Presentations = () => {
                     <Calendar className="h-3.5 w-3.5" />
                     {p.date}
                   </div>
-                  <h3 className="mt-2 font-display text-xl font-semibold">{p.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.description}</p>
+                  <h3 className="mt-2 font-display text-xl font-semibold">
+                    {p.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    {p.description}
+                  </p>
                   <Button
                     asChild={!disabled}
                     disabled={disabled}

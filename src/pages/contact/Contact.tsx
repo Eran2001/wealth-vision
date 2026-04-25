@@ -1,11 +1,11 @@
-import { PageHeader } from "@/components/PageHeader";
+import { PageHeader } from "@/components/partials/PageHeader";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
-import { site } from "@/data/site";
+import { site } from "@/constants/site";
 import { useToast } from "@/hooks/use-toast";
 import { FormEvent } from "react";
 
@@ -16,7 +16,8 @@ const Contact = () => {
     e.preventDefault();
     toast({
       title: "Message captured",
-      description: "This is a frontend-only demo — no message was actually sent.",
+      description:
+        "This is a frontend-only demo — no message was actually sent.",
     });
   };
 
@@ -37,8 +38,11 @@ const Contact = () => {
                   <Mail className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="font-semibold">Email</h3>
-                  <a href={`mailto:${site.email}`} className="text-sm text-muted-foreground hover:text-foreground">
+                  <h3 className="font-heading">Email</h3>
+                  <a
+                    href={`mailto:${site.email}`}
+                    className="text-fine text-muted-foreground hover:text-foreground"
+                  >
                     {site.email}
                   </a>
                 </div>
@@ -50,8 +54,8 @@ const Contact = () => {
                   <Phone className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="font-semibold">Phone</h3>
-                  <p className="text-sm text-muted-foreground">{site.phone}</p>
+                  <h3 className="font-heading">Phone</h3>
+                  <p className="text-fine text-muted-foreground">{site.phone}</p>
                 </div>
               </div>
             </Card>
@@ -61,8 +65,10 @@ const Contact = () => {
                   <MapPin className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="font-semibold">Address</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{site.address}</p>
+                  <h3 className="font-heading">Address</h3>
+                  <p className="text-fine text-muted-foreground leading-airy">
+                    {site.address}
+                  </p>
                 </div>
               </div>
             </Card>
@@ -70,8 +76,10 @@ const Contact = () => {
 
           {/* Form */}
           <Card className="lg:col-span-3 p-7 md:p-9 shadow-elevated">
-            <h2 className="font-display text-2xl font-semibold">Send a message</h2>
-            <p className="mt-1 text-sm text-muted-foreground">
+            <h2 className="font-display text-title font-heading">
+              Send a message
+            </h2>
+            <p className="mt-1 text-fine text-muted-foreground">
               We typically respond within two working days.
             </p>
             <form onSubmit={onSubmit} className="mt-7 space-y-5">
@@ -82,18 +90,36 @@ const Contact = () => {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="you@example.com" required />
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="you@example.com"
+                    required
+                  />
                 </div>
               </div>
               <div className="space-y-2">
                 <Label htmlFor="subject">Subject</Label>
-                <Input id="subject" placeholder="What is this about?" required />
+                <Input
+                  id="subject"
+                  placeholder="What is this about?"
+                  required
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="message">Message</Label>
-                <Textarea id="message" placeholder="Write your message here…" rows={6} required />
+                <Textarea
+                  id="message"
+                  placeholder="Write your message here…"
+                  rows={6}
+                  required
+                />
               </div>
-              <Button type="submit" size="lg" className="bg-primary hover:bg-primary/90">
+              <Button
+                type="submit"
+                size="lg"
+                className="bg-primary hover:bg-primary/90"
+              >
                 Send message <Send className="ml-1.5 h-4 w-4" />
               </Button>
             </form>

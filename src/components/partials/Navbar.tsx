@@ -1,9 +1,15 @@
 import { useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Menu, GraduationCap } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+  SheetHeader,
+} from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { site } from "@/data/site";
+import { site } from "@/constants/site";
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -18,7 +24,6 @@ const links = [
 
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const location = useLocation();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/85 backdrop-blur-md">
@@ -27,9 +32,13 @@ export const Navbar = () => {
           <div className="flex h-9 w-9 items-center justify-center rounded-md bg-hero-gradient text-primary-foreground shadow-card-soft">
             <GraduationCap className="h-5 w-5" />
           </div>
-          <div className="flex flex-col leading-none">
-            <span className="font-display text-base font-semibold text-foreground">{site.projectName}</span>
-            <span className="text-[11px] uppercase tracking-wider text-muted-foreground">Research Project</span>
+          <div className="flex flex-col leading-flush">
+            <span className="font-display text-body font-heading text-foreground">
+              {site.projectName}
+            </span>
+            <span className="text-eyebrow label-case tracking-airy text-muted-foreground">
+              Research Project
+            </span>
           </div>
         </Link>
 
@@ -40,10 +49,10 @@ export const Navbar = () => {
               to={l.to}
               className={({ isActive }) =>
                 cn(
-                  "px-3 py-2 text-sm font-medium rounded-md transition-colors",
+                  "px-3 py-2 text-fine font-ui rounded-md transition-colors",
                   isActive
                     ? "text-primary bg-secondary"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/60"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/60",
                 )
               }
             >
@@ -61,7 +70,9 @@ export const Navbar = () => {
             </SheetTrigger>
             <SheetContent side="right" className="w-[280px]">
               <SheetHeader>
-                <SheetTitle className="font-display text-left">{site.projectName}</SheetTitle>
+                <SheetTitle className="font-display text-left">
+                  {site.projectName}
+                </SheetTitle>
               </SheetHeader>
               <nav className="mt-6 flex flex-col gap-1">
                 {links.map((l) => (
@@ -71,10 +82,10 @@ export const Navbar = () => {
                     onClick={() => setOpen(false)}
                     className={({ isActive }) =>
                       cn(
-                        "px-3 py-2.5 rounded-md text-sm font-medium transition-colors",
+                        "px-3 py-2.5 rounded-md text-fine font-ui transition-colors",
                         isActive
                           ? "bg-primary text-primary-foreground"
-                          : "text-foreground hover:bg-secondary"
+                          : "text-foreground hover:bg-secondary",
                       )
                     }
                   >

@@ -5,7 +5,7 @@ import { lazy } from "react";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Layout } from "@/components/Layout";
+import { Layout } from "@/components/partials/Layout";
 
 const HomePage = lazy(() => import("./pages/home"));
 const Domain = lazy(() => import("./pages/domain/Domain"));

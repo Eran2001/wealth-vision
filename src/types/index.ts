@@ -30,4 +30,6 @@ export interface Person {
   role: string;
   department?: string;
   initials: string;
+  image?: string;
+  email?: string;
 }
