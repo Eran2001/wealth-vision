@@ -1,17 +1,20 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { lazy } from "react";
+
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Layout } from "@/components/Layout";
-import Index from "./pages/Index.tsx";
-import Domain from "./pages/Domain.tsx";
-import Milestones from "./pages/Milestones.tsx";
-import Documents from "./pages/Documents.tsx";
-import Presentations from "./pages/Presentations.tsx";
-import About from "./pages/About.tsx";
-import Contact from "./pages/Contact.tsx";
-import NotFound from "./pages/NotFound.tsx";
+
+const HomePage = lazy(() => import("./pages/home"));
+const Domain = lazy(() => import("./pages/domain/Domain"));
+const Milestones = lazy(() => import("./pages/milestones/Milestones"));
+const Documents = lazy(() => import("./pages/documents/Documents"));
+const Presentations = lazy(() => import("./pages/presentation/Presentations"));
+const About = lazy(() => import("./pages/about/About"));
+const Contact = lazy(() => import("./pages/contact/Contact"));
+const NotFound = lazy(() => import("./pages/404/NotFound"));
 
 const queryClient = new QueryClient();
 
@@ -20,10 +23,15 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true,
+        }}
+      >
         <Routes>
           <Route element={<Layout />}>
-            <Route path="/" element={<Index />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/domain" element={<Domain />} />
             <Route path="/milestones" element={<Milestones />} />
             <Route path="/documents" element={<Documents />} />
@@ -31,7 +39,6 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
           </Route>
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

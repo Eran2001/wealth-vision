@@ -3,7 +3,7 @@ import * as React from "react";
 import type { ToastActionElement, ToastProps } from "@/components/ui/toast";
 
 const TOAST_LIMIT = 1;
-const TOAST_REMOVE_DELAY = 1000000;
+const TOAST_REMOVE_DELAY = 3500;
 
 type ToasterToast = ToastProps & {
   id: string;
@@ -79,7 +79,9 @@ export const reducer = (state: State, action: Action): State => {
     case "UPDATE_TOAST":
       return {
         ...state,
-        toasts: state.toasts.map((t) => (t.id === action.toast.id ? { ...t, ...action.toast } : t)),
+        toasts: state.toasts.map((t) =>
+          t.id === action.toast.id ? { ...t, ...action.toast } : t,
+        ),
       };
 
     case "DISMISS_TOAST": {
@@ -134,20 +136,19 @@ function dispatch(action: Action) {
 
 type Toast = Omit<ToasterToast, "id">;
 
-function toast({ ...props }: Toast) {
+function toast(props: Toast | string) {
+  const normalized: Toast =
+    typeof props === "string" ? { title: props } : props;
   const id = genId();
 
   const update = (props: ToasterToast) =>
-    dispatch({
-      type: "UPDATE_TOAST",
-      toast: { ...props, id },
-    });
+    dispatch({ type: "UPDATE_TOAST", toast: { ...props, id } });
   const dismiss = () => dispatch({ type: "DISMISS_TOAST", toastId: id });
 
   dispatch({
     type: "ADD_TOAST",
     toast: {
-      ...props,
+      ...normalized,
       id,
       open: true,
       onOpenChange: (open) => {
@@ -156,12 +157,20 @@ function toast({ ...props }: Toast) {
     },
   });
 
-  return {
-    id: id,
-    dismiss,
-    update,
-  };
+  return { id, dismiss, update };
 }
+
+toast.success = (title: string, description?: string) =>
+  toast({ title, description, variant: "success" });
+
+toast.error = (title: string, description?: string) =>
+  toast({ title, description, variant: "destructive" });
+
+toast.warning = (title: string, description?: string) =>
+  toast({ title, description, variant: "warning" });
+
+toast.info = (title: string, description?: string) =>
+  toast({ title, description, variant: "info" });
 
 function useToast() {
   const [state, setState] = React.useState<State>(memoryState);
