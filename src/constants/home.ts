@@ -5,7 +5,7 @@ import {
   Sparkles,
   Target,
   Telescope,
-  Users,
+  User,
 } from "lucide-react";
 
 export const homeHighlights = [
@@ -43,8 +43,8 @@ export const homeBenefits = [
     text: "Environmental, Social, and Governance factors are first-class inputs, not afterthoughts.",
   },
   {
-    icon: Users,
-    title: "Collaborative",
-    text: "Four-member team with clearly scoped responsibilities and shared accountability.",
+    icon: User,
+    title: "Independently Led",
+    text: "A single project owner leads the research, coordination, and investor profiling work with supervisor guidance.",
   },
 ];
