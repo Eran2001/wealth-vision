@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import * as Icon from "@/components/icons";
 import { PageHeader } from "@/components/partials/PageHeader";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -93,11 +92,7 @@ const Milestones = () => {
                         <h3 className="font-display text-subhead font-heading leading-compact tracking-close md:text-title">
                           {milestone.title}
                         </h3>
-                        <div className="mt-2 flex items-center gap-1.5 text-fine leading-body tracking-default text-muted-foreground">
-                          <Icon.Calendar className="h-3.5 w-3.5" />
-                          {milestone.dateRange}
                         </div>
-                      </div>
                       <div className="flex flex-col items-end gap-2">
                         <Badge
                           variant="outline"
@@ -106,9 +101,7 @@ const Milestones = () => {
                           <StatusIcon className="h-3 w-3 mr-1" />
                           {meta.label}
                         </Badge>
-                        <Badge variant="secondary" className="font-mono">
-                          {milestone.marks} {milestonesPage.marksSuffix}
-                        </Badge>
+
                       </div>
                     </div>
 

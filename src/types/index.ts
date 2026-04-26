@@ -1,9 +1,9 @@
 export interface Milestone {
   id: string;
   title: string;
-  dateRange: string;
+  dateRange?: string;
   description: string;
-  marks: string;
+  marks?: string;
   status: "completed" | "in-progress" | "upcoming";
   image: {
     src: string;

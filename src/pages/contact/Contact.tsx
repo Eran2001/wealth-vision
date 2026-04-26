@@ -75,6 +75,7 @@ const Contact = () => {
                     id="name"
                     placeholder={contactPage.form.fields.name.placeholder}
                     required
+                    className="mt-1"
                   />
                 </div>
                 <div className="space-y-2">
@@ -86,6 +87,7 @@ const Contact = () => {
                     type="email"
                     placeholder={contactPage.form.fields.email.placeholder}
                     required
+                    className="mt-1"
                   />
                 </div>
               </div>
@@ -97,6 +99,7 @@ const Contact = () => {
                   id="subject"
                   placeholder={contactPage.form.fields.subject.placeholder}
                   required
+                  className="mt-1"
                 />
               </div>
               <div className="space-y-2">
@@ -108,6 +111,7 @@ const Contact = () => {
                   placeholder={contactPage.form.fields.message.placeholder}
                   rows={6}
                   required
+                  className="mt-1"
                 />
               </div>
               <Button

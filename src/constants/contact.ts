@@ -49,6 +49,7 @@ export const contactCards = [
     icon: Phone,
     label: "Phone",
     value: site.phone,
+    href: `tel:${site.phone.replace(/\s/g, "")}`,
   },
   {
     icon: MapPin,
