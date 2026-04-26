@@ -5,6 +5,10 @@ export interface Milestone {
   description: string;
   marks: string;
   status: "completed" | "in-progress" | "upcoming";
+  image: {
+    src: string;
+    alt: string;
+  };
 }
 
 export interface DocumentItem {
@@ -21,6 +25,10 @@ export interface Presentation {
   date: string;
   description: string;
   link: string;
+  image: {
+    src: string;
+    alt: string;
+  };
 }
 
 export interface Person {

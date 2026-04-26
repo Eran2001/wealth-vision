@@ -32,14 +32,14 @@ const DocCard = ({ doc }: { doc: DocumentItem }) => {
         className="mt-5 self-start"
       >
         {disabled ? (
-          <span>
+          <span className="inline-flex items-center gap-1.5">
             {documentsPage.openLabel}
-            <Icon.ExternalLink className="ml-1.5 h-3.5 w-3.5" />
+            <Icon.ExternalLink className="h-3.5 w-3.5" />
           </span>
         ) : (
           <a href={doc.link} target="_blank" rel="noreferrer">
             {documentsPage.openLabel}
-            <Icon.ExternalLink className="ml-1.5 h-3.5 w-3.5" />
+            <Icon.ExternalLink className="h-3.5 w-3.5" />
           </a>
         )}
       </Button>

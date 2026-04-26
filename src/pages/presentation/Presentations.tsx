@@ -22,9 +22,14 @@ const Presentations = () => {
                 key={presentation.id}
                 className="overflow-hidden shadow-card-soft hover:shadow-elevated transition-all hover:-translate-y-0.5"
               >
-                <div className="relative flex aspect-video items-center justify-center bg-hero-gradient">
-                  <div className="absolute inset-0 opacity-subtle bg-dot-grid-sm" />
-                  <Icon.Presentation className="relative h-14 w-14 text-primary-foreground/80" />
+                <div className="relative aspect-video overflow-hidden bg-secondary">
+                  <img
+                    src={presentation.image.src}
+                    alt={presentation.image.alt}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-primary/10" />
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-1.5 text-caption leading-body tracking-default text-muted-foreground">
@@ -44,14 +49,19 @@ const Presentations = () => {
                     variant="default"
                   >
                     {disabled ? (
-                      <span>
+                      <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
                         {presentationsPage.viewLabel}
-                        <Icon.ExternalLink className="ml-1.5 h-4 w-4" />
+                        <Icon.ExternalLink className="h-4 w-4" />
                       </span>
                     ) : (
-                      <a href={presentation.link} target="_blank" rel="noreferrer">
+                      <a
+                        href={presentation.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 whitespace-nowrap"
+                      >
                         {presentationsPage.viewLabel}
-                        <Icon.ExternalLink className="ml-1.5 h-4 w-4" />
+                        <Icon.ExternalLink className="h-4 w-4" />
                       </a>
                     )}
                   </Button>

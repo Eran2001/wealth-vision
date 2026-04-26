@@ -3,16 +3,16 @@ export const aboutPage = {
     eyebrow: "About Us",
     title: "The People Behind the Work",
     subtitle:
-      "Four researchers and a supervisory panel guiding the direction, methodology, and quality of the project.",
+      "The project owner and academic supervisor guiding the direction, methodology, and quality of Wealth Vision.",
   },
   team: {
-    title: "Team Members",
+    title: "Project Owner",
     description:
-      "Each member leads a research component and contributes to the integrated system.",
+      "Responsible for the core research work, project coordination, and investor profiling component.",
   },
   supervisors: {
-    title: "Supervisors",
+    title: "Supervisor",
     description:
-      "Academic and industry guidance throughout the research lifecycle.",
+      "Provides academic guidance, research review, and quality direction throughout the project lifecycle.",
   },
 };

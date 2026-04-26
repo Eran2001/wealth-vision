@@ -118,8 +118,13 @@ const Milestones = () => {
                           {milestone.description}
                         </p>
                       </div>
-                      <div className="aspect-video md:aspect-auto rounded-lg border border-dashed border-border bg-secondary/40 flex items-center justify-center text-muted-foreground">
-                        <Icon.Image className="h-8 w-8 opacity-40" />
+                      <div className="overflow-hidden rounded-lg border border-border bg-secondary/40">
+                        <img
+                          src={milestone.image.src}
+                          alt={milestone.image.alt}
+                          loading="lazy"
+                          className="h-full min-h-36 w-full object-cover transition-transform duration-500 hover:scale-105"
+                        />
                       </div>
                     </div>
                   </Card>
