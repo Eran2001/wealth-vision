@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
+//
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
